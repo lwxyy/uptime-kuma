@@ -40,13 +40,14 @@ execSync("node extra/update-version.js");
 buildDist();
 
 // Build slim image (rootless)
-buildImage(repoNames, [ "2-slim-rootless", ver(version, "slim-rootless") ], "rootless", "BASE_IMAGE=louislam/uptime-kuma:base2-slim");
+// NOTE: changed BASE_IMAGE to your account image
+buildImage(repoNames, [ "2-slim-rootless", ver(version, "slim-rootless") ], "rootless", "BASE_IMAGE=lwxyy/uptime-kuma:base2-slim");
 
 // Build full image (rootless)
 buildImage(repoNames, [ "2-rootless", ver(version, "rootless") ], "rootless");
 
 // Build slim image
-buildImage(repoNames, [ "next-slim", "2-slim", ver(version, "slim") ], "release", "BASE_IMAGE=louislam/uptime-kuma:base2-slim");
+buildImage(repoNames, [ "next-slim", "2-slim", ver(version, "slim") ], "release", "BASE_IMAGE=lwxyy/uptime-kuma:base2-slim");
 
 // Build full image
 buildImage(repoNames, [ "next", "2", version ], "release");
